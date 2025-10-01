@@ -1,0 +1,355 @@
+<!-- Texas Rhapsody | One-Page Website Module (drop-in HTML/CSS/JS) -->
+<!-- Paste this entire block into a HubSpot custom module's HTML field. No external deps. -->
+<div class="trhapsody" data-site-version="v1.0">
+  <style>
+    /* --------------------
+       Texas Rhapsody Theme
+       -------------------- */
+    .trhapsody{--bg:#0b0b0c;--ink:#f6f5f2;--muted:#c9c3b8;--brand:#b85c2e;--brand-2:#e3a65a;--accent:#7c2d12;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);--shadow:0 10px 30px rgba(0,0,0,.4);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:radial-gradient(1200px 800px at 80% -10%,rgba(184,92,46,.15),transparent),radial-gradient(900px 700px at -10% 110%,rgba(227,166,90,.12),transparent),var(--bg);}
+    .trhapsody *{box-sizing:border-box}
+    .trhapsody a{color:var(--brand-2);text-decoration:none}
+    .trhapsody a:hover{opacity:.9;text-decoration:underline}
+    .trhapsody .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+    .trhapsody .section{padding:80px 0;border-top:1px solid var(--line)}
+    .trhapsody .section:first-of-type{border-top:0}
+    .trhapsody h1,.trhapsody h2,.trhapsody h3{line-height:1.1;margin:0 0 .6em}
+    .trhapsody h1{font-size:clamp(40px,7vw,72px);letter-spacing:.02em}
+    .trhapsody h2{font-size:clamp(28px,4vw,40px)}
+    .trhapsody h3{font-size:20px;color:var(--muted);font-weight:600}
+    .trhapsody p{color:#eae7e1;font-size:18px;line-height:1.7;margin:0 0 1em}
+    .trhapsody .eyebrow{letter-spacing:.18em;text-transform:uppercase;color:var(--brand-2);font-weight:700;font-size:12px}
+
+    /* Texas charm accents */
+    .trhapsody .star{display:inline-block;width:14px;height:14px;margin:0 6px;transform:rotate(10deg)}
+    .trhapsody .star::before{content:"";display:block;width:100%;height:100%;background:conic-gradient(from 0deg,var(--brand),var(--brand-2));clip-path:path('M7 0 L8.6 4.8 L14 5.2 L9.8 8.2 L11.5 13.5 L7 10.4 L2.5 13.5 L4.2 8.2 L0 5.2 L5.4 4.8 Z');filter:drop-shadow(0 0 6px rgba(227,166,90,.35))}
+
+    /* Top Nav */
+    .trhapsody .nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,11,12,.9),rgba(11,11,12,.75));backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--line)}
+    .trhapsody .nav .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .trhapsody .brandMark{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.06em}
+    .trhapsody .brandLogo{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .trhapsody .brandLogo::after{content:"";position:absolute;inset:4px;border-radius:4px;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent)}
+    .trhapsody .navlinks{display:flex;gap:18px;align-items:center}
+    .trhapsody .navlinks a{padding:8px 10px;border-radius:10px;transition:.2s ease}
+    .trhapsody .navlinks a.active,.trhapsody .navlinks a:hover{background:var(--glass)}
+    .trhapsody .hamb{display:none}
+
+    /* Hero */
+    .trhapsody .hero{padding:110px 0 80px;background:radial-gradient(800px 300px at 50% 0,rgba(227,166,90,.12),transparent)}
+    .trhapsody .grid{display:grid;gap:26px}
+    @media(min-width:900px){.trhapsody .hero .grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+    .trhapsody .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--glass);font-size:13px}
+    .trhapsody .ctaRow{display:flex;gap:12px;flex-wrap:wrap}
+    .trhapsody .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font-weight:700;cursor:pointer;transition:transform .08s ease,background .2s}
+    .trhapsody .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1b110a;border:0}
+    .trhapsody .btn:hover{transform:translateY(-1px)}
+
+    /* Placeholder blocks */
+    .trhapsody .ph{border:1px dashed rgba(227,166,90,.45);background:repeating-linear-gradient(45deg,rgba(227,166,90,.08),rgba(227,166,90,.08) 10px,transparent 10px,transparent 20px);border-radius:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+    .trhapsody .ph.text{display:grid;place-items:center;color:var(--muted);font-size:14px;padding:24px}
+    .trhapsody .ratio{aspect-ratio:16/9}
+    .trhapsody .ratio-tall{aspect-ratio:3/4}
+    .trhapsody .ratio-wide{aspect-ratio:21/9}
+
+    /* Data cards */
+    .trhapsody .dataGrid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media(min-width:760px){.trhapsody .dataGrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+    .trhapsody .card{border:1px solid var(--line);border-radius:16px;background:var(--glass);padding:16px}
+    .trhapsody .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+    .trhapsody .v{font-size:18px;font-weight:700;margin-top:6px}
+
+    /* Two-column sections */
+    .trhapsody .twoCol{display:grid;gap:28px}
+    @media(min-width:960px){.trhapsody .twoCol{grid-template-columns:1fr 1fr}}
+
+    /* Lists */
+    .trhapsody ul.clean{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .trhapsody .pill{display:inline-block;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--glass);font-size:13px}
+
+    /* Gallery & Videos */
+    .trhapsody .masonry{columns:1;column-gap:16px}
+    @media(min-width:700px){.trhapsody .masonry{columns:2}}
+    @media(min-width:1060px){.trhapsody .masonry{columns:3}}
+    .trhapsody .tile{break-inside:avoid;margin:0 0 16px}
+
+    /* Premiere strip */
+    .trhapsody .strip{display:flex;gap:14px;overflow:auto;padding-bottom:6px}
+    .trhapsody .chip{min-width:180px;border:1px solid var(--line);border-radius:14px;background:var(--glass);padding:12px}
+
+    /* Footer */
+    .trhapsody .footer{padding:40px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+
+    /* Mobile nav */
+    @media(max-width:860px){
+      .trhapsody .hamb{display:flex;flex-direction:column;gap:4px}
+      .trhapsody .hamb span{width:24px;height:2px;background:var(--ink)}
+      .trhapsody .navlinks{position:absolute;inset:64px 10px auto 10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;display:none;flex-direction:column}
+      .trhapsody .nav.open .navlinks{display:flex}
+    }
+  </style>
+
+  <!-- NAV -->
+  <header class="nav" id="top">
+    <div class="wrap bar">
+      <div class="brandMark">
+        <span class="brandLogo" aria-hidden="true"></span>
+        <span>Texas Rhapsody</span>
+        <span class="star" aria-hidden="true"></span>
+      </div>
+      <nav aria-label="Primary">
+        <button class="hamb" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+        <div class="navlinks" id="navlinks">
+          <a href="#about" data-link>About</a>
+          <a href="#details" data-link>Details</a>
+          <a href="#cast" data-link>Cast & Crew</a>
+          <a href="#videos" data-link>Videos</a>
+          <a href="#gallery" data-link>Gallery</a>
+          <a href="#premiere" data-link>Premiere</a>
+          <a href="#links" data-link>Links</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero section" aria-labelledby="hero-title">
+    <div class="wrap grid">
+      <div>
+        <div class="badge"><span class="eyebrow">A Buttercup Productions Film</span></div>
+        <h1 id="hero-title">Texas Rhapsody</h1>
+        <p>Set in Big Spring, Texas with scenes in Boca Raton, Florida. A modern tale with West Texas grit and heart.</p>
+        <div class="ctaRow">
+          <a class="btn primary" href="#videos">Watch Trailer (placeholder)</a>
+          <a class="btn" href="#premiere">Premiere Dates</a>
+          <a class="btn" href="#links">Follow Updates</a>
+        </div>
+      </div>
+      <div>
+        <div class="ph ratio-wide tile" aria-label="Hero banner image placeholder"></div>
+        <div class="ph text" style="margin-top:10px">Drop key art or a looping trailer still here</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / SYNOPSIS -->
+  <section id="about" class="section" aria-labelledby="about-title">
+    <div class="wrap twoCol">
+      <div>
+        <span class="eyebrow">Synopsis</span>
+        <h2 id="about-title">About the Movie</h2>
+        <p><!-- TODO: Replace with official synopsis -->A compelling synopsis will live here. Two to three paragraphs that set the tone without spoilers. Mention the themes, the setting, and the emotional core. Keep it tight and cinematic.</p>
+        <p>Include a one-liner for quick marketing use. Example: “A small town, a big bet, and the rhythm of second chances.”</p>
+        <div class="pill">Delivery Platform: Amazon Prime</div>
+      </div>
+      <div>
+        <div class="ph ratio tile" aria-label="Synopsis image placeholder"></div>
+        <div class="ph text">Replace with BTS still or director photo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK DETAILS -->
+  <section id="details" class="section" aria-labelledby="details-title">
+    <div class="wrap">
+      <span class="eyebrow">Fast Facts</span>
+      <h2 id="details-title">Details</h2>
+      <div class="dataGrid" role="list">
+        <div class="card" role="listitem"><div class="k">Rating</div><div class="v">TBD</div></div>
+        <div class="card" role="listitem"><div class="k">Runtime</div><div class="v">TBD</div></div>
+        <div class="card" role="listitem"><div class="k">Genre</div><div class="v">TBD</div></div>
+        <div class="card" role="listitem"><div class="k">Release Window</div><div class="v">January 2026</div></div>
+        <div class="card" role="listitem"><div class="k">Premiere Cities</div><div class="v">Austin • Fort Worth • Big Spring</div></div>
+        <div class="card" role="listitem"><div class="k">Filming Locations</div><div class="v">Big Spring, TX • Boca Raton, FL</div></div>
+        <div class="card" role="listitem"><div class="k">Director</div><div class="v">Taylor Stanley</div></div>
+        <div class="card" role="listitem"><div class="k">Screenwriter</div><div class="v">Sam Pfiester</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAST & CREW -->
+  <section id="cast" class="section" aria-labelledby="cast-title">
+    <div class="wrap twoCol">
+      <div>
+        <span class="eyebrow">People</span>
+        <h2 id="cast-title">Cast</h2>
+        <div class="masonry" aria-label="Cast headshots placeholder grid">
+          <div class="tile ph ratio-tall"></div>
+          <div class="tile ph ratio-tall"></div>
+          <div class="tile ph ratio-tall"></div>
+          <div class="tile ph ratio-tall"></div>
+          <div class="tile ph ratio-tall"></div>
+          <div class="tile ph ratio-tall"></div>
+        </div>
+        <div class="ph text">Replace tiles with cast headshots and names</div>
+      </div>
+      <div>
+        <span class="eyebrow">Filmmakers</span>
+        <h2>Crew</h2>
+        <ul class="clean">
+          <li><strong>Director:</strong> Taylor Stanley</li>
+          <li><strong>Producers:</strong> Sam and Rebecca Pfiester, Hunter Enis, James Enis, Sergio Salani, Robert Buckner, Darwin Harrison, Dale Illig</li>
+          <li><strong>Screenwriter:</strong> Sam Pfiester</li>
+          <li class="ph text">Add DP, Editor, Composer, Production Designer, Costume, Sound, etc.</li>
+        </ul>
+        <div class="ph ratio" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos" class="section" aria-labelledby="videos-title">
+    <div class="wrap">
+      <span class="eyebrow">Clips</span>
+      <h2 id="videos-title">Trailer & Videos</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+        <div class="card">
+          <div class="ph ratio" aria-label="Video placeholder"></div>
+          <div class="ph text">Embed YouTube trailer</div>
+        </div>
+        <div class="card">
+          <div class="ph ratio" aria-label="Video placeholder"></div>
+          <div class="ph text">Clip 1</div>
+        </div>
+        <div class="card">
+          <div class="ph ratio" aria-label="Video placeholder"></div>
+          <div class="ph text">Clip 2</div>
+        </div>
+        <div class="card">
+          <div class="ph ratio" aria-label="Video placeholder"></div>
+          <div class="ph text">Behind the Scenes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <span class="eyebrow">Artwork</span>
+      <h2 id="gallery-title">Posters & Stills</h2>
+      <div class="masonry" aria-label="Gallery placeholder masonry">
+        <div class="tile ph ratio-tall"></div>
+        <div class="tile ph ratio"></div>
+        <div class="tile ph ratio-tall"></div>
+        <div class="tile ph ratio-wide"></div>
+        <div class="tile ph ratio"></div>
+        <div class="tile ph ratio-tall"></div>
+        <div class="tile ph ratio"></div>
+      </div>
+      <div class="ph text">Drop mobile posters and artwork here</div>
+    </div>
+  </section>
+
+  <!-- PREMIERE DATES / LOCATIONS -->
+  <section id="premiere" class="section" aria-labelledby="premiere-title">
+    <div class="wrap">
+      <span class="eyebrow">January 2026</span>
+      <h2 id="premiere-title">Premiere Events</h2>
+      <div class="strip" role="list">
+        <div class="chip" role="listitem"><strong>Austin, TX</strong><br><span class="muted">Date TBA • Venue TBA</span></div>
+        <div class="chip" role="listitem"><strong>Fort Worth, TX</strong><br><span class="muted">Date TBA • Venue TBA</span></div>
+        <div class="chip" role="listitem"><strong>Big Spring, TX</strong><br><span class="muted">Date TBA • Venue TBA</span></div>
+      </div>
+      <div class="ph text" style="margin-top:14px">Add RSVP links or ticketing once available</div>
+    </div>
+  </section>
+
+  <!-- OFFICIAL LINKS -->
+  <section id="links" class="section" aria-labelledby="links-title">
+    <div class="wrap twoCol">
+      <div>
+        <span class="eyebrow">Follow</span>
+        <h2 id="links-title">Official Links</h2>
+        <ul class="clean">
+          <li><a href="#" rel="noopener">IMDb</a></li>
+          <li><a href="#" rel="noopener">Rotten Tomatoes</a></li>
+          <li><a href="#" rel="noopener">Wikipedia</a></li>
+          <li><a href="#" rel="noopener">YouTube</a></li>
+          <li><a href="#" rel="noopener">Moviefone</a></li>
+          <li><a href="#" rel="noopener">Twitter / X</a></li>
+          <li><a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+        <div class="ph text" style="margin-top:10px">Replace # with live URLs once profiles are created</div>
+      </div>
+      <div>
+        <span class="eyebrow">Press Kit</span>
+        <h2>Downloads</h2>
+        <ul class="clean">
+          <li><span class="pill">Poster Pack (placeholder)</span></li>
+          <li><span class="pill">Logo & Brand Assets (placeholder)</span></li>
+          <li><span class="pill">One Sheet PDF (placeholder)</span></li>
+        </ul>
+        <div class="ph ratio" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+      <div>
+        <strong>Buttercup Productions</strong>
+        <div style="opacity:.7">TexasRhapsody.com • TexasRhapsodyMovie.com • TexasRhapsodyTheMovie.com</div>
+      </div>
+      <a class="btn" href="#top" aria-label="Back to top">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const root=document.querySelector('.trhapsody');
+      const nav=root.querySelector('.nav');
+      const links=[...root.querySelectorAll('[data-link]')];
+      const hamb=root.querySelector('.hamb');
+      const navlinks=root.querySelector('#navlinks');
+
+      // Smooth scroll
+      links.forEach(a=>a.addEventListener('click',e=>{
+        e.preventDefault();
+        const id=a.getAttribute('href');
+        const el=root.querySelector(id);
+        if(el){el.scrollIntoView({behavior:'smooth',block:'start'});} 
+        // close mobile menu
+        nav.classList.remove('open');
+        hamb.setAttribute('aria-expanded','false');
+      }));
+
+      // Mobile menu toggle
+      hamb.addEventListener('click',()=>{
+        nav.classList.toggle('open');
+        const open=nav.classList.contains('open');
+        hamb.setAttribute('aria-expanded',String(open));
+      });
+
+      // Active link highlight
+      const observer=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          const id='#'+entry.target.id;
+          const link=links.find(l=>l.getAttribute('href')===id);
+          if(link){
+            if(entry.isIntersecting){
+              links.forEach(l=>l.classList.remove('active'));
+              link.classList.add('active');
+            }
+          }
+        })
+      },{rootMargin:'-40% 0px -55% 0px',threshold:[0,1]});
+      ['about','details','cast','videos','gallery','premiere','links'].forEach(id=>{
+        const el=root.querySelector('#'+id);if(el)observer.observe(el);
+      });
+
+      // Optional: small parallax sheen on hero placeholder
+      const heroPh=root.querySelector('.hero .ratio-wide');
+      if(heroPh){
+        heroPh.addEventListener('mousemove',e=>{
+          const r=heroPh.getBoundingClientRect();
+          const x=(e.clientX-r.left)/r.width;const y=(e.clientY-r.top)/r.height;
+          heroPh.style.background='radial-gradient(300px 200px at '+(x*100)+'% '+(y*100)+'%, rgba(227,166,90,.12), transparent)';
+        });
+        heroPh.addEventListener('mouseleave',()=>{
+          heroPh.style.background='';
+        })
+      }
+    })();
+  </script>
+</div>
